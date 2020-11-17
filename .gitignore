@@ -11,4 +11,5 @@ comments/node_modules/
 comments/package-lock.json
 posts/node_modules/
 posts/package-lock.json
-
+event-bus/node_modules/
+event-bus/package-lock.json
