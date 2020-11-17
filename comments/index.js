@@ -6,7 +6,7 @@ const cors = require('cors')
 const { randomBytes } = require('crypto')
 
 const port = process.env.PORT || 4001
-const commentsByPostId = {}
+const commentsByPostId = []
 
 app.use(bodyParser.json())
 app.use(cors())
