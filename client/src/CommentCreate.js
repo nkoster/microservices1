@@ -8,11 +8,13 @@ const CommentCreate = ({ id }) => {
         await axios.post(`http://localhost:4001/posts/${id}/comments`, {
             content
         })
+        setContent('')
     }
     return (
         <div>
             <form onSubmit={onSubmit}>
                 <div className='form-group'>
+                    <hr/>
                     <label>New Comment</label>
                     <input
                         className='form-control'
