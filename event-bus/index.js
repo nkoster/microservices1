@@ -1,8 +1,8 @@
-const express = require('express')
-const bodyParser = require('body-parser')
-const axios = require('axios')
-const app = express()
-const port = process.env.PORT || 5000
+const express = require('express'),
+    bodyParser = require('body-parser'),
+    axios = require('axios'),
+    app = express(),
+    port = process.env.PORT || 5000
 
 app.use(bodyParser.json())
 
@@ -15,4 +15,5 @@ app.post('/events', (req, res) => {
     console.log('event emitted')
 })
 
-app.listen(port, _ => console.log(`Event-Bus running on port ${port}`))
+app.listen(port, _ =>
+    console.log(`Event-Bus running on port ${port}`))
