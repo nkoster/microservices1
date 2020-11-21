@@ -1,13 +1,12 @@
-const express = require('express')
-const app = express()
-const bodyParser = require('body-parser')
-const axios = require('axios')
-const cors = require('cors')
-
-const { randomBytes } = require('crypto')
-
-const port = process.env.PORT || 4001
-const commentsByPostId = []
+const
+    express = require('express'),
+    app = express(),
+    bodyParser = require('body-parser'),
+    axios = require('axios'),
+    cors = require('cors'),
+    { randomBytes } = require('crypto'),
+    port = process.env.PORT || 4001,
+    commentsByPostId = []
 
 app.use(bodyParser.json())
 app.use(cors())
