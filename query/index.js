@@ -1,14 +1,14 @@
-const express = require('express')
-const app = express()
-const bodyParser = require('body-parser')
-const cors = require('cors')
-const PORT = process.env.PORT || 4002
-const posts = {}
+const express = require('express'),
+    app = express(),
+    bodyParser = require('body-parser'),
+    cors = require('cors'),
+    PORT = process.env.PORT || 4002,
+    posts = {}
 
-app.use(bodyParser())
+app.use(bodyParser.json())
 app.use(cors())
 
-app.get('/posts', (req, res) => {
+app.get('/posts', (_, res) => {
     res.send(posts)
 })
 
@@ -21,8 +21,17 @@ app.post('/events', (req, res) => {
     }
 
     if (type === 'CommentCreated') {
-        const { id, content, postId } = data
-        posts[postId].comments.push({ id, content })
+        const { id, content, postId, status } = data
+        posts[postId].comments.push({ id, content, status })
+        console.log(type, data)
+    }
+
+    if (type === 'CommentUpdated') {
+        const { id, content, postId, status } = data
+        const post = posts[postId]
+        const comment = post.comments.find(comment => id === comment.id)
+        comment.status = status
+        comment.content = content
         console.log(type, data)
     }
 
