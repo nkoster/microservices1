@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: nkoster-query
+  name: nkoster-query
+  namespace: nkoster
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nkoster-query
+  template:
+    metadata:
+      labels:
+        app: nkoster-query
+    spec:
+      containers:
+      - name: nkoster-query
+        args:
+        - npm
+        - start
+        image: registry.portavita.net/nkoster/ms1-query
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /posts
+            port: 4002
+            scheme: HTTP
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 1
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /posts
+            port: 4002
+            scheme: HTTP
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 1
+        resources:
+          limits:
+            cpu: 100m
+            memory: 128Mi
+          requests:
+            cpu: 100m
+            memory: 64Mi
+      restartPolicy: Always
