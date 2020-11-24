@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: nkoster-posts
+  name: nkoster-posts
+  namespace: nkoster
+spec:
+  ports:
+  - name: nkoster-posts
+    port: 80
+    protocol: TCP
+    targetPort: 4000
+  selector:
+    app: nkoster-posts
+  type: ClusterIP
