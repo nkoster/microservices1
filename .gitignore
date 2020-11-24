@@ -17,3 +17,9 @@ query/node_modules/
 query/package-lock.json
 moderation/node_modules/
 moderation/package-lock.json
+.vscode/
+client/node_modules/
+infra/k8s/dump-nkoster-webfont-deployment.yaml
+infra/k8s/dump-nkoster-webfont-ingress.yaml
+infra/k8s/dump-nkoster-webfont-service.yaml
+package-lock.json
