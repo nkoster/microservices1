@@ -13,4 +13,4 @@ spec:
     targetPort: 4000
   selector:
     app: nkoster-posts
-  type: ClusterIP
+  type: NodePort
