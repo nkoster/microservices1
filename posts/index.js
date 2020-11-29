@@ -31,4 +31,7 @@ app.post('/events', (req, res) => {
     res.send({})
 })
 
-app.listen(port, _ => console.log(`Blog Posts micro service running at ${port}`))
+app.listen(port, _ => {
+    console.log('v3 test k8s')
+    console.log(`Blog Posts micro service running at ${port}`)
+})
