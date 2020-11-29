@@ -18,7 +18,7 @@ app.post('/posts', async (req, res) => {
     const id = randomBytes(4).toString('hex')
     const { title } = req.body
     posts[id] = { id, title }
-    await axios.post('http://localhost:5000/events', {
+    await axios.post('http://nkoster-event-bus/events', {
         type: 'PostCreated',
         data: { id, title }
     })
@@ -32,6 +32,6 @@ app.post('/events', (req, res) => {
 })
 
 app.listen(port, _ => {
-    console.log('v3 test k8s')
+    console.log('v0.0.4')
     console.log(`Blog Posts micro service running at ${port}`)
 })
