@@ -20,7 +20,7 @@ spec:
         args:
         - npm
         - start
-        image: registry.portavita.net/nkoster/ms1-comments:0.0.7
+        image: registry.portavita.net/nkoster/ms1-comments:0.0.6
         imagePullPolicy: IfNotPresent
         livenessProbe:
           failureThreshold: 3
