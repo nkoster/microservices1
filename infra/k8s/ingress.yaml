@@ -1,0 +1,23 @@
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx-private
+  labels:
+    app: nkoster-ingress
+  name: nkoster-ingress
+  namespace: nkoster
+spec:
+  rules:
+  - host: nkoster.pvdev.portavita.net
+    http:
+      paths:
+      - backend:
+          serviceName: nkoster-client
+          servicePort: 80
+        path: /
+      - backend:
+          serviceName: nkoster-posts
+          servicePort: 80
+        path: /posts
