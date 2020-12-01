@@ -20,7 +20,7 @@ spec:
         args:
         - npm
         - start
-        image: registry.portavita.net/nkoster/ms1-event-bus:0.0.7
+        image: registry.portavita.net/nkoster/ms1-event-bus:0.0.8
         imagePullPolicy: IfNotPresent
         livenessProbe:
           failureThreshold: 3
