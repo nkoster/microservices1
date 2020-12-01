@@ -42,8 +42,9 @@ app.post('/events', (req, res) => {
 })
 
 app.listen(PORT, async _ => {
+    console.log('v0.0.3')
     console.log(`Blog Query micro service running at ${PORT}`)
-    const response = await axios.get('http://localhost:5000/events')
+    const response = await axios.get('http://nkoster-event-bus/events')
     Object.values(response.data).forEach(event => {
         console.log('Processing event', event.type)
         handleEvent(event.type, event.data)
