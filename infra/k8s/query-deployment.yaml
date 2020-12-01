@@ -20,7 +20,7 @@ spec:
         args:
         - npm
         - start
-        image: registry.portavita.net/nkoster/ms1-query
+        image: registry.portavita.net/nkoster/ms1-query:0.0.3
         imagePullPolicy: IfNotPresent
         livenessProbe:
           failureThreshold: 3
