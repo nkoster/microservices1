@@ -15,6 +15,10 @@ app.get('/posts/:id/comments', (req, res) => {
     res.send(commentsByPostId[req.params.id] || [])
 })
 
+app.get('/live', (req, res) => {
+    res.send({ status: "ok"})
+})
+
 app.post('/posts/:id/comments', async (req, res) => {
     const id = randomBytes(4).toString('hex')
     const { content } = req.body
@@ -52,6 +56,6 @@ app.post('/events', async (req, res) => {
 })
 
 app.listen(port, _ => {
-    console.log('v0.0.4')
+    console.log('v0.0.6')
     console.log(`Blog Comments micro service running at ${port}`)
 })
