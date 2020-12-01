@@ -7,12 +7,16 @@ const
 
 app.use(bodyParser.json())
 
+app.get('/live', (_, res) => {
+    res.send({ status: 'ok' })
+})
+
 app.post('/events', async (req, res) => {
     const { type, data } = req.body
     if (type === 'CommentCreated') {
         const status = data.content.includes('orange')
             ? 'rejected' : 'approved'
-        await axios.post('http://localhost:5000/events', {
+        await axios.post('http://nkoster-event-bus/events', {
             type: 'CommentModerated',
             data: {
                 id: data.id,
@@ -26,5 +30,7 @@ app.post('/events', async (req, res) => {
     res.send({ event: req.body.type })
 })
 
-app.listen(PORT, _ =>
-    console.log(`Moderation Service running at ${PORT}`))
+app.listen(PORT, _ => {
+    console.log('v0.0.4')
+    console.log(`Moderation Service running at ${PORT}`)
+})
