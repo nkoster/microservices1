@@ -5,7 +5,7 @@ const PostCreate = _ => {
     const [title, setTitle] = useState('')
     const onSubmit = async evt => {
         evt.preventDefault()
-        await axios.post('http://localhost:4000/posts', {
+        await axios.post('http://nkoster.pvdev.portavita.net/posts', {
             title
         })
         setTitle('')
