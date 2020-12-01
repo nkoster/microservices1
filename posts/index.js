@@ -32,6 +32,6 @@ app.post('/events', (req, res) => {
 })
 
 app.listen(port, _ => {
-    console.log('v0.0.4')
+    console.log('v0.0.5')
     console.log(`Blog Posts micro service running at ${port}`)
 })
