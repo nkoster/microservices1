@@ -12,7 +12,7 @@ app.post('/events', (req, res) => {
     events.push(event)
     axios.post('http://nkoster-posts/events', event)
     axios.post('http://nkoster-comments/events', event)
-    // axios.post('http://localhost:4002/events', event)
+    axios.post('http://nkoster-query/events', event)
     // axios.post('http://localhost:4003/events', event)
     res.send({ status: 'OK' })
     console.log('event emitted')
@@ -23,6 +23,6 @@ app.get('/events', (req, res) => {
 })
 
 app.listen(port, _ => {
-    console.log('v0.0.6')
+    console.log('v0.0.7')
     console.log(`Event-Bus running on port ${port}`)
 })
