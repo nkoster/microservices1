@@ -5,7 +5,7 @@ const CommentCreate = ({ id }) => {
     const [content, setContent] = useState('')
     const onSubmit = async evt => {
         evt.preventDefault()
-        await axios.post(`http://nkoster.pvdev.portavita.net/posts/${id}/comments`, {
+        await axios.post(`http://nkoster-comments/posts/${id}/comments`, {
             content
         })
         setContent('')
