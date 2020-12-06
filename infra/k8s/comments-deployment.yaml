@@ -65,22 +65,3 @@ spec:
   selector:
     app: nkoster-comments
   type: ClusterIP
----
-apiVersion: extensions/v1beta1
-kind: Ingress
-metadata:
-  annotations:
-    kubernetes.io/ingress.class: nginx-private
-  labels:
-    app: nkoster-comments
-  name: nkoster-comments
-  namespace: nkoster
-spec:
-  rules:
-  - host: nkoster.pvdev.portavita.net
-    http:
-      paths:
-      - backend:
-          serviceName: nkoster-comments
-          servicePort: 80
-        path: /posts

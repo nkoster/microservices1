@@ -65,22 +65,22 @@ spec:
   selector:
     app: nkoster-posts
   type: ClusterIP
----
-apiVersion: extensions/v1beta1
-kind: Ingress
-metadata:
-  annotations:
-    kubernetes.io/ingress.class: nginx-private
-  labels:
-    app: nkoster-posts
-  name: nkoster-posts
-  namespace: nkoster
-spec:
-  rules:
-  - host: nkoster.pvdev.portavita.net
-    http:
-      paths:
-      - backend:
-          serviceName: nkoster-posts
-          servicePort: 80
-        path: /posts
+# ---
+# apiVersion: extensions/v1beta1
+# kind: Ingress
+# metadata:
+#   annotations:
+#     kubernetes.io/ingress.class: nginx-private
+#   labels:
+#     app: nkoster-posts
+#   name: nkoster-posts
+#   namespace: nkoster
+# spec:
+#   rules:
+#   - host: nkoster.pvdev.portavita.net
+#     http:
+#       paths:
+#       - backend:
+#           serviceName: nkoster-posts
+#           servicePort: 80
+#         path: /posts
