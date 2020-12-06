@@ -65,22 +65,3 @@ spec:
   selector:
     app: nkoster-client
   type: ClusterIP
----
-apiVersion: extensions/v1beta1
-kind: Ingress
-metadata:
-  annotations:
-    kubernetes.io/ingress.class: nginx-private
-  labels:
-    app: nkoster-client
-  name: nkoster-client
-  namespace: nkoster
-spec:
-  rules:
-  - host: nkoster.pvdev.portavita.net
-    http:
-      paths:
-      - backend:
-          serviceName: nkoster-client
-          servicePort: 80
-        path: /
