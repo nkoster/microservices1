@@ -8,7 +8,7 @@ const PostList = _ => {
     const [posts, setPosts] = useState({})
 
     const fetchPosts = async _ => {
-        const response = await axios.get('http://nkoster-posts/posts')
+        const response = await axios.get('http://nkoster-query/posts')
         setPosts(response.data)
     }
 
