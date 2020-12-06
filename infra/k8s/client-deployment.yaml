@@ -1,0 +1,86 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: nkoster-client
+  name: nkoster-client
+  namespace: nkoster
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nkoster-client
+  template:
+    metadata:
+      labels:
+        app: nkoster-client
+    spec:
+      containers:
+      - name: nkoster-client
+        args:
+        - npm
+        - start
+        image: registry.portavita.net/nkoster/ms1-client:0.0.3
+        imagePullPolicy: IfNotPresent
+        # livenessProbe:
+        #   failureThreshold: 3
+        #   httpGet:
+        #     path: /posts
+        #     port: 4000
+        #     scheme: HTTP
+        #   periodSeconds: 10
+        #   successThreshold: 1
+        #   timeoutSeconds: 1
+        # readinessProbe:
+        #   failureThreshold: 3
+        #   httpGet:
+        #     path: /posts
+        #     port: 4000
+        #     scheme: HTTP
+        #   periodSeconds: 10
+        #   successThreshold: 1
+        #   timeoutSeconds: 1
+        resources:
+          limits:
+            cpu: 100m
+            memory: 512Mi
+          requests:
+            cpu: 100m
+            memory: 64Mi
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: nkoster-client
+  name: nkoster-client
+  namespace: nkoster
+spec:
+  ports:
+  - name: nkoster-client
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: nkoster-client
+  type: ClusterIP
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx-private
+  labels:
+    app: nkoster-client
+  name: nkoster-client
+  namespace: nkoster
+spec:
+  rules:
+  - host: nkoster.pvdev.portavita.net
+    http:
+      paths:
+      - backend:
+          serviceName: nkoster-client
+          servicePort: 80
+        path: /
