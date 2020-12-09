@@ -8,7 +8,7 @@ build:
   local:
     push: false
   artifacts:
-    - image: registry.portavita.net/nkoster/ms1-client:0.0.8
+    - image: registry.portavita.net/nkoster/ms1-client
       context: client
       docker:
         dockerfile: Dockerfile
@@ -16,43 +16,43 @@ build:
         manual:
           - src: 'src/**/*.js'
             dest: .
-    - image: registry.portavita.net/nkoster/ms1-comments:0.0.6
+    - image: registry.portavita.net/nkoster/ms1-comments
       context: comments
       docker:
         dockerfile: Dockerfile
       sync:
         manual:
           - src: 'src/**/*.js'
-            dest: .
-    - image: registry.portavita.net/nkoster/ms1-event-bus:0.0.8
+            dest: '.'
+    - image: registry.portavita.net/nkoster/ms1-event-bus
       context: event-bus
       docker:
         dockerfile: Dockerfile
       sync:
         manual:
           - src: 'src/**/*.js'
-            dest: .
-    - image: registry.portavita.net/nkoster/ms1-moderation:0.0.4
+            dest: '.'
+    - image: registry.portavita.net/nkoster/ms1-moderation
       context: moderation
       docker:
         dockerfile: Dockerfile
       sync:
         manual:
           - src: 'src/**/*.js'
-            dest: .
-    - image: registry.portavita.net/nkoster/ms1-posts:0.0.7
+            dest: '.'
+    - image: registry.portavita.net/nkoster/ms1-posts
       context: posts
       docker:
         dockerfile: Dockerfile
       sync:
         manual:
           - src: 'src/**/*.js'
-            dest: .
-    - image: registry.portavita.net/nkoster/ms1-query:0.0.3
+            dest: '.'
+    - image: registry.portavita.net/nkoster/ms1-query
       context: query
       docker:
         dockerfile: Dockerfile
       sync:
         manual:
           - src: 'src/**/*.js'
-            dest: .
+            dest: '.'
